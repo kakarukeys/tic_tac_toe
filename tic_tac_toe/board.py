@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from .game import GameState
+
+
 BOARD_TEMPLATE = """
  {0} | {1} | {2}
 ---+---+---
@@ -9,6 +12,6 @@ BOARD_TEMPLATE = """
 """
 
 
-def render(game_state):
+def render(game_state: GameState) -> str:
     """ return the game board in a string """
     return BOARD_TEMPLATE.format(*game_state)
