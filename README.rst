@@ -2,11 +2,25 @@
 tic-tac-toe
 ===========
 
-Classic turn-based game for kids in Python
+Classic turn-based game for kids in Python.
 
+
+To install the game, clone this repository, go inside it and run
+
+.. code-block:: bash
+
+    $ make install
+
+To run the game,
+
+.. code-block:: bash
+
+    $ tic_tae_toe
+
+
+Tested on Python 3.5+
 
 * Free software: MIT license
-* Documentation: https://tic-tac-toe.readthedocs.io.
 
 
 Credits
