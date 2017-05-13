@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from typing import List, Union
+from typing import List, Union, Iterable
 
 
 """
     Game state consists of markers and valid moves
-    e.g. ['X', 2, 'O', 4, 5, 6, 7, 8, 9, 10]
+    e.g. ['X', 2, 'O', 4, 5, 6, 7, 8, 9]
 """
 
 GameState = List[Union[int, str]]
@@ -70,3 +70,8 @@ def play_move(game_state: GameState, marker: str, move: int) -> GameState:
 def is_finished(game_state: GameState) -> bool:
     """ return whether the game is fully played out """
     return all(isinstance(x, str) for x in game_state)
+
+
+def gen_available_moves(game_state: GameState) -> Iterable[int]:
+    """ yield all available next moves """
+    return filter(lambda x: isinstance(x, int), game_state)

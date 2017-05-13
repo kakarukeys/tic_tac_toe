@@ -54,3 +54,8 @@ def test_is_finished():
     assert not game.is_finished(
         ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 9]
     )
+
+
+def test_gen_available_moves():
+    assert list(game.gen_available_moves(['X', 2, '0', 4, 5, 6, 7, 8, 'X'])) == [2, 4, 5, 6, 7, 8]
+    assert list(game.gen_available_moves(['X', 'X', '0', 'X', 'O', 'X', 'O', 'X', 'X'])) == []

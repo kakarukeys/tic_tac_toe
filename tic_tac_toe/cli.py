@@ -4,7 +4,7 @@ from itertools import cycle
 
 import click
 
-from tic_tac_toe import game, board
+from . import game, board, ai
 
 
 def ask_for_player_name(player_number):
@@ -49,11 +49,18 @@ def main(args=None):
 
     # play the game till won or drawn
     for active_player in cycle(players):
-        move = ask_for_player_move(active_player, game_state)
-        click.echo(move)
-
         marker = assigned_markers[active_player]
-        game_state = game.play_move(game_state, marker, move)
+
+        if active_player.lower() == "computer":
+            click.echo("computer thinking...")
+            result = ai.compute_next_move(marker, game_state)
+            move = result.move
+            game_state = result.game_state
+        else:
+            move = ask_for_player_move(active_player, game_state)
+            game_state = game.play_move(game_state, marker, move)
+
+        click.echo(move)
         click.echo(board.render(game_state))
 
         if game.is_winning_move(game_state, marker, move):
