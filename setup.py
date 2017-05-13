@@ -18,7 +18,7 @@ test_requirements = [
 
 setup(
     name='tic_tac_toe',
-    version='0.1.0',
+    version='0.2.0',
     description="Classic turn-based game for kids in Python",
     long_description=readme + '\n\n' + history,
     author="Wong Jiang Fung",
