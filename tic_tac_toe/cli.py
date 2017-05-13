@@ -10,7 +10,9 @@ from . import game, board, ai
 def ask_for_player_name(player_number):
     return click.prompt(
         "Player {}, how may I address you".format(player_number),
-        prompt_suffix='? '
+        prompt_suffix='? ',
+        default="Computer",
+        show_default=False
     )
 
 
@@ -35,8 +37,12 @@ def main(args=None):
     # on-board players
     players = []
 
+    click.echo("[Press Enter to let computer plays]\n")
     for i in range(2):
         players.append(ask_for_player_name(i + 1))
+
+    if players[0] == players[1]:
+        players = [s + str(i + 1) for i, s in enumerate(players)]
 
     click.echo("\n{0} vs {1}\n".format(*players))
 
@@ -51,7 +57,7 @@ def main(args=None):
     for active_player in cycle(players):
         marker = assigned_markers[active_player]
 
-        if active_player.lower() == "computer":
+        if active_player.startswith("Computer"):
             click.echo("computer thinking...")
             result = ai.compute_next_move(marker, game_state)
             move = result.move
